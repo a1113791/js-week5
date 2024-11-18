@@ -100,3 +100,38 @@ function filterData() {
 regionSearch.addEventListener('change',function(){
 	filterData();
 })
+
+//新增套票
+const ticketName = document.querySelector("#ticketName");
+const ticketImgUrl = document.querySelector("#ticketImgUrl");
+const ticketRegion = document.querySelector("#ticketRegion");
+const ticketPrice = document.querySelector("#ticketPrice");
+const ticketNum = document.querySelector("#ticketNum");
+const ticketRate = document.querySelector("#ticketRate");
+const ticketDescription = document.querySelector("#ticketDescription");
+
+const addTicketBtn = document.querySelector(".addTicket-btn");
+
+const addTicketForm = document.querySelector(".addTicket-form");
+
+function addData(){
+	let obj = {
+		id: data.length,
+		name: ticketName.value.trim(),
+		imgUrl: ticketImgUrl.value.trim(),
+		area: ticketRegion.value.trim(),
+		description: ticketDescription.value.trim(),
+		group: Number(ticketNum.value.trim()),
+		price: Number(ticketPrice.value.trim()),
+		rate: Number(ticketRate.value.trim())
+	};
+	data.push(obj);
+	regionSearch.value = "";
+	addTicketForm.reset();
+	renderData(data);
+
+}
+
+addTicketBtn.addEventListener('click', function(){
+	addData();
+})
